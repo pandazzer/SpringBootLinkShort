@@ -1,28 +1,29 @@
 package DMteam.Spring_Link_Short;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.time.ZonedDateTime;
+import java.util.Date;
 
 @Entity
+@Table(name = "shorturl")
 public class Shorter {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
     @Column
     private String url;
-    @Column
-    private String short_url;
+    @Column(name = "short_url")
+    private String shorturl;
     @Column(name = "time", columnDefinition = "TIMESTAMP")
-    private ZonedDateTime time;
+    private Date time;
 
     public Shorter() {
     }
 
-    public Shorter(String url, String short_url, ZonedDateTime time) {
+    public Shorter(String url, String short_url, Date time) {
         this.url = url;
-        this.short_url = short_url;
+        this.shorturl = short_url;
         this.time = time;
     }
 
@@ -35,18 +36,18 @@ public class Shorter {
     }
 
     public String getShort_url() {
-        return short_url;
+        return shorturl;
     }
 
     public void setShort_url(String short_url) {
-        this.short_url = short_url;
+        this.shorturl = short_url;
     }
 
-    public ZonedDateTime getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(ZonedDateTime time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 
